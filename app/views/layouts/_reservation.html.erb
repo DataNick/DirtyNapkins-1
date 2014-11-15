@@ -1,0 +1,5 @@
+<%= customer.name %>, 
+<% customer.reservations.each do |reservation| %>
+	<%= reservation.name %>
+	<%= reservation.time %>
+<% end %>
