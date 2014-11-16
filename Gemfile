@@ -29,10 +29,11 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# gem 'pry'
 gem 'pry-rails'
-gem 'awesome_print'
-gem 'better_errors'
-gem "binding_of_caller"
+# gem 'awesome_print'
+# gem 'better_errors'
+# gem "binding_of_caller"
 gem 'foundation-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
