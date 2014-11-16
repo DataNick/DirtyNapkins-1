@@ -1,8 +1,8 @@
-<h1>All Reservations for <%= @restaurants.reservation %></h1>
+<h1>All Reservations </h1>
 <% @reservations.each do |rest| %>
-	<h2><%= link_to "#{rest.name}", restaurant_reservation_path(rest) %></h2>
-	<h3><%= rest.description %></h3>
-	<p><%= rest.address %></p>
-	<p>Open From: <%= rest.open_hour %> to: <%= rest.close_hour %> </p>
-	<br>
-	<% end %> 
+	<h2><%= link_to "All restaurants", restaurant_path(rest) %></h2>
+	<h3><%= rest.date %></h3>
+	<h3><%= rest.time %></h3>
+	<% end %>
+	<%= link_to "Edit Reservation", edit_restaurant_path(Restaurant.first)%>
+
