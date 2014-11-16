@@ -6,7 +6,10 @@ class CustomersController < ApplicationController
 	end
 
 	def show
-		
+		@customer = Customer.find(params[:id])
+		if Customer.first
+			@reservation = @customer.reservations.all
+		end
 	end
 
 	def new
@@ -14,7 +17,7 @@ class CustomersController < ApplicationController
 	end
 
 	def edit
-		
+		@customer = Customer.find(params[:id])
 	end
 
 	def create
@@ -22,19 +25,29 @@ class CustomersController < ApplicationController
 		if @customer.save
 			redirect_to root_path
 		else
+			flash[:notice] = "Please instantiate yourself."
 			render :new
 		end
 	end
 
 	def update
-		
+		@customer = Customer.find(params[:id])
+		if customer_attributes(customer_params)
+			redirect_to customers_path(@customer)
+		else
+		  flash[:notice] = "Error editing profile. Please fill in all fields."
+		  render :edit
+	end
 	end
 
 	def destroy
-		
+		@customer = Customer.find(params[:id])
+		@customer.destroy
+		redirect_to customers_path
 	end
 
 	private
+
 	def set_customer
 		@customer = Customer.find(params[:id])	
 	end
