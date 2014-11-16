@@ -11,6 +11,8 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <% if flash[:notice] %>
+    <p id="notice"><%= flash[:notice] %></p>
   <nav class="top-bar" data-topbar>
     <ul class="title-area">
        
