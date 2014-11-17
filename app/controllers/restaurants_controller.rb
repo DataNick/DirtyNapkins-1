@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
-		
+		@restaurant = Restaurant.first
 	end
 
 	def new
@@ -18,20 +18,26 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
-		
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def create
-		@restaurant = Restaurant.new(restaurant_params) 
-		if @restaurant.save
-			redirect_to restaurants_path
-		else
-			render :new
-		end
+	@restaurant = Restaurant.new(restaurant_params) 
+	  if @restaurant.save
+	    redirect_to restaurants_path
+	  else
+		render :new
+	  end
 	end
 
 	def update
-		
+	@restuarant = Restuarant.find(params[:id])
+	  if restuarant_attributes(restuarant_params)
+	    redirect_to restuarants_path(@restuarant)
+	  else
+		flash[:notice] = "Error editing profile. Please fill in all fields."
+		render :edit
+	  end
 	end
 
 	def destroy
@@ -41,7 +47,7 @@ class RestaurantsController < ApplicationController
 
 	private
 	def set_restaurant
-		@restaurant = Restaurant.find(params[:id])	
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def restaurant_params
